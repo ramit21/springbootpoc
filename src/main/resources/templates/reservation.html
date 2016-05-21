@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/jquery-1.12.3.js"></script>
+<script src="/refreshTable.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/springboot.css"></link>
+</head>
+<body>
+
+	<h1>Calling Spring boot controllers via ajax</h1>
+	<p>Add a new reservation, and on submit the table of reservations gets refreshed using ajax, without the need of refreshing the page</p>
+	<h2>Booked Reservations:</h2>
+	<table id="data-table">
+		<tr>
+			<td>There are no items...</td>
+		</tr>
+	</table>
+	<p>Enter name:</p>
+	<input type="text" id="nameBox" />
+	<input type="button"  onclick="addReservation()" value="Reserve"/>
+</body>
+</html>

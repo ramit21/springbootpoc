@@ -1,0 +1,15 @@
+
+body {
+    color: blue;
+}
+
+h1 {
+    color: green;
+}
+
+table, th, td {
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border: 1px solid black;
+}
+

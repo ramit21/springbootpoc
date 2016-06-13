@@ -1,17 +1,20 @@
+# Springboot POC project
+
 This is a POC project using Spring boot for creating an MVC application, h2 (In-Memeory) database and css/html/jquery at the front end.
 
-To run this POC, download this project, run the maven build, and then launch the SpringbootApplication.java as a Java program. 
-Once the server is up, hit http://localhost:8090/ to launch the application.
+Following steps are required to setup and run this POC: 
+ - Download this project using Git
+ - Run maven build
+ - Launch the SpringbootApplication.java as a Java program
+ - Once the server is up, hit http://localhost:8090/ to launch the application.
 
 Concepts to learn from the Project:
-
-UI:
+## UI
 From the home page, you can migrate to the reservations page http://localhost:8090/reserve/
 When the reservation html page is being loaded, $(document).ready() gets called. 
 At this point we call the backend api using Jquery ajax support to fetch all the reservation data and render dynamically in a table.
 Pay attention to how the path to CSS, js files and libraries is mentioned in the html files.
-
-Backend:
+## Backend
 SpringbootApplication.java is responsible for bootstrapping the backend server because of @SpringBootApplication annotation.
 The controller classes expose Restful Http resources.
 Application uses thymeleaf for rendering the view.
@@ -21,8 +24,7 @@ If you want the controller to return a JSON response rather than a view, then ad
 
 
 ===============================================================================
-
-More Information on SpringBoot:
+## More Information on SpringBoot:
 
 What is Spring Boot? The short answer, is Spring Boot is a library that does a lot work for the user to simplify the implementation of web services.  
 Not only is Spring Boot simple to use, it is highly flexible and extensible.  Adding, replacing, or disabling  components is often a matter of configuration.
@@ -42,10 +44,11 @@ Since these annotations are so frequently used together (especially if you follo
 
 By default, Spring Boot uses Tomcat 7. If you want to use Tomcat 8, just say so! You need only override the Maven build’s tomcat.version property and this 
 will trigger the resolution of later builds of Apache Tomcat.
+```sh
 <properties>
   <tomcat.version>8.0.3</tomcat.version>
 </properties>
-
+```
 @RepositoryRestResource : this annotation is used to create a HATEOAS service with Spring JPA. 
 If you add the @RestController then you have to implement each method that you want to expose on your own and also is does not export this to a HATEOAS format.
 HATEOAS (Hypermedia as the Engine of Application State) is a constraint of the REST application architecture.
@@ -53,6 +56,5 @@ A hypermedia-driven site provides information to navigate the site's REST interf
 
 https://spring.io/ website has separate guides each for integrating Spring boot application with Jquery, Angular etc.
 
-TODO:
-Check JMX integration
+TODO: JMX integration
 

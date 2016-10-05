@@ -21,7 +21,7 @@ public class ReservationService {
 	public Collection<Reservation> findAllReservations() {
 		return repo.findAll();
 	}
-
+	
 	public Boolean saveReservation(String name) {
 		repo.save(new Reservation(name));
 		return true;

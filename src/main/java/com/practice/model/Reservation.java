@@ -3,6 +3,7 @@ package com.practice.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 @Entity
 public class Reservation {
@@ -11,6 +12,10 @@ public class Reservation {
 	@GeneratedValue
 	private Long id;
 	private String reservationName;
+	
+	//Optimistic locking
+	@Version
+	private Integer version;
 
 	public Reservation() { // why jpa why
 	}

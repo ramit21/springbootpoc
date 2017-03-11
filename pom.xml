@@ -57,16 +57,27 @@
 		</dependency>
 
 		<!-- @Retryable -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
 		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
 			<version>1.1.2.RELEASE</version>
 		</dependency>
 
-
+		<!-- Fluentlenium dependencies start -->
+		<dependency>
+			<groupId>org.fluentlenium</groupId>
+			<artifactId>fluentlenium-core</artifactId>
+			<version>0.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Fluentlenium dependencies end -->
 		
-
 	</dependencies>
 
 	<build>
@@ -77,6 +88,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

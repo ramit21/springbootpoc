@@ -1,6 +1,7 @@
 # Springboot POC project
 
 This is a POC project using Spring boot for creating an MVC application, h2 (In-Memeory) database and css/html/jquery at the front end.
+Automation testing using Fluentlenium.
 
 Following steps are required to setup and run this POC: 
  - Download this project using Git
@@ -57,4 +58,22 @@ A hypermedia-driven site provides information to navigate the site's REST interf
 https://spring.io/ website has separate guides each for integrating Spring boot application with Jquery, Angular etc.
 
 TODO: JMX integration
+
+
+===============================================================================
+## Fluentlenium:
+
+Fluentlenium helps you automate UI functional tests for the browser. It provides a Java fluent interface to Selenium, and brings some magic to avoid common 
+issues faced by Selenium users. FluentLenium is shipped with adapters for JUnit, TestNG and Cucumber, but it can also be used standalone.
+
+You can define the URL of the page by overriding the getUrl method.
+Then, it’s possible to use the goTo() method in your test code to set the current URL to the URL of the page.
+You can also override isAt method, to run all the assertions necessary in order to ensure that you are on the right page.
+
+Fluentlenium provides $ and el as DOM selectors.
+Leuentlenium can be used for end to end automation testing with the backend service available, or can be used just for HTML frontend, by mocking the backend 
+calls with mock JSON responses.
+
+To learn more on Fluentlenium: http://fluentlenium.org/
+
 

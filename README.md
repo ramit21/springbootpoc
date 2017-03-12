@@ -66,6 +66,9 @@ TODO: JMX integration
 Fluentlenium helps you automate UI functional tests for the browser. It provides a Java fluent interface to Selenium, and brings some magic to avoid common 
 issues faced by Selenium users. FluentLenium is shipped with adapters for JUnit, TestNG and Cucumber, but it can also be used standalone.
 
+(Fluentlenium/Selenium are not testing framework though, they are browser automation frameworks. For testing purposes, they are clubbed with 
+testing frameworks like Junit)
+
 You can define the URL of the page by overriding the getUrl method.
 Then, it’s possible to use the goTo() method in your test code to set the current URL to the URL of the page.
 You can also override isAt method, to run all the assertions necessary in order to ensure that you are on the right page.

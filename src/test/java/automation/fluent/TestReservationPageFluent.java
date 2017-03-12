@@ -31,8 +31,9 @@ public class TestReservationPageFluent extends FluentTest {
 	public void testReservationsPage() throws InterruptedException {
 		goTo("http://localhost:8090/reserve/");
 		Thread.sleep(800L);
+		System.err.println(driver.getPageSource());				//Print the HTML page
 		assertTrue(title().contains("Reservations"));
-		String nameToAdd = "Narendra Modi*";
+		String nameToAdd = "Narendra Modi";
 		FluentList<FluentWebElement> tableColList = $("table#data-table tr td");
 		//assertEquals(tableColList.get(0).getElement().getText(),"There are no items...");
 		assertEquals(tableColList.get(3).getElement().getText(),"Ramit");

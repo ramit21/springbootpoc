@@ -25,16 +25,16 @@ public class ReservationRestController {
 	@Qualifier("reservationService")
 	private ReservationService service;
 
+	@RequestMapping(value = "/")
+	public String welcome(Model model) {
+		return "reservation";
+	}
+	
 	// http://localhost:8090/reserve/all
 	@ResponseBody
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<Reservation> reservations() {
 		return service.findAllReservations();
-	}
-
-	@RequestMapping(value = "/")
-	public String welcome(Model model) {
-		return "reservation";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -45,6 +45,7 @@ public class ReservationRestController {
 	}
 
 	@RequestMapping("/findByName/{name}")
+	@ResponseBody
 	public Collection<Reservation> findReservationByName(@PathVariable String name) {
 		return service.findReservationByName(name);
 	}

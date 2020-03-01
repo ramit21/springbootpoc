@@ -79,4 +79,18 @@ calls with mock JSON responses.
 
 To learn more on Fluentlenium: http://fluentlenium.org/
 
+## Content negotiation:
+
+By default, springboot returns json output. To enable xml:
+1. Add jackson-dataformat-xml in pom
+2. Append the .xml in the output if you want the output in xml format:
+
+```
+http://localhost:8080/reserve/findByName/Ramit.xml
+```
+3. Or, hit the url without .xml/.json, and instead give the accept header:
+
+```
+Accept: application/xml
+```
 

@@ -10,12 +10,12 @@ Following steps are required to setup and run this POC:
  - Once the server is up, hit http://localhost:8090/ to launch the application.
 
 Concepts to learn from the Project:
-## UI
+### UI
 From the home page, you can migrate to the reservations page http://localhost:8090/reserve/
 When the reservation html page is being loaded, $(document).ready() gets called. 
 At this point we call the backend api using Jquery ajax support to fetch all the reservation data and render dynamically in a table.
 Pay attention to how the path to CSS, js files and libraries is mentioned in the html files.
-## Backend
+### Backend
 SpringbootApplication.java is responsible for bootstrapping the backend server because of @SpringBootApplication annotation.
 The controller classes expose Restful Http resources.
 Application uses thymeleaf for rendering the view.
@@ -24,8 +24,7 @@ For eg, HomePageRestController.java -> welcome() function returns "Welcome" as a
 If you want the controller to return a JSON response rather than a view, then add @ResponseBody annotation to the controller function. eg. ReservationController.java -> reservations() method.
 
 
-===============================================================================
-## More Information on SpringBoot:
+### More Information on SpringBoot:
 
 What is Spring Boot? The short answer, is Spring Boot is a library that does a lot work for the user to simplify the implementation of web services.  
 Not only is Spring Boot simple to use, it is highly flexible and extensible.  Adding, replacing, or disabling  components is often a matter of configuration.
@@ -57,11 +56,8 @@ A hypermedia-driven site provides information to navigate the site's REST interf
 
 https://spring.io/ website has separate guides each for integrating Spring boot application with Jquery, Angular etc.
 
-TODO: JMX integration
 
-
-===============================================================================
-## Fluentlenium:
+### Fluentlenium:
 
 Fluentlenium helps you automate UI functional tests for the browser. It provides a Java fluent interface to Selenium, and brings some magic to avoid common 
 issues faced by Selenium users. FluentLenium is shipped with adapters for JUnit, TestNG and Cucumber, but it can also be used standalone.
@@ -79,18 +75,53 @@ calls with mock JSON responses.
 
 To learn more on Fluentlenium: http://fluentlenium.org/
 
-## Content negotiation:
+### Content negotiation:
 
 By default, springboot returns json output. To enable xml:
 1. Add jackson-dataformat-xml in pom
-2. Append the .xml in the output if you want the output in xml format:
+2. Hit the url with the accept header:
 
 ```
-http://localhost:8080/reserve/findByName/Ramit.xml
-```
-3. Or, hit the url without .xml/.json, and instead give the accept header:
-
-```
-Accept: application/xml
+Header {Accept: application/xml}
+http://localhost:8090/reserve/findByName/Ramit
 ```
 
+### HATEOAS: 
+HATEOAS stands for Hypermedia As The Engine Of Application State. Used to give additional information in our http responses.
+
+To use HATEOS, include it in pom. See the below url that not only returns the data for the given user, but also returns the link to URI returning all users:
+
+```
+http://localhost:8090/reserve/findByName/Ramit
+```
+
+See ReservationRestController -> findReservationByName() on how to prepare a HATEOAS resource, add links to the resource and returning the same.
+
+### Swagger
+Swagger is used to share the contract of your service. Add the swagger as well as the swagger-ui dependency in the pom. Create a swagger config class that creates a bean of type Docket. (see SwaggerConfig.java). Hit the url below to see the swagger UI
+
+```
+http://localhost:8090/swagger-ui.html
+```
+Now hit the url below, and you can see lot of documentation created. This json can be shared with the clients, who can then load it into swagger ui at their end to see all information about our exposed apis.
+
+```
+http://localhost:8090/v2/api-docs
+```
+
+### Actuator
+```
+http://localhost:8090/health (spring 2.0 onwards , it's http://localhost:8090/actuator/health
+http://localhost:8090/info
+```
+
+You can expose more actuators by adding below in application.properties:
+
+```
+management.endpoints.web.exposure.include=*
+```
+
+### Internationalization
+
+
+ 

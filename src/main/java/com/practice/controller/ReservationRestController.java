@@ -1,9 +1,12 @@
 package com.practice.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +36,7 @@ public class ReservationRestController {
 	// http://localhost:8090/reserve/all
 	@ResponseBody
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Collection<Reservation> reservations() {
+	public Collection<Reservation> getAllReservations() {
 		return service.findAllReservations();
 	}
 	
@@ -46,8 +49,17 @@ public class ReservationRestController {
 
 	@RequestMapping("/findByName/{name}")
 	@ResponseBody
-	public Collection<Reservation> findReservationByName(@PathVariable String name) {
-		return service.findReservationByName(name);
+	public Resource<Reservation> findReservationByName(@PathVariable String name) {
+		List<Reservation> reservations = service.findReservationByName(name);
+		
+		//Prepare HATEOAS response with additional response
+		Resource<Reservation> resource = new Resource<>(reservations.get(0));
+		
+		ControllerLinkBuilder linkTo = ControllerLinkBuilder.linkTo(
+				ControllerLinkBuilder.methodOn(this.getClass()).getAllReservations());
+		
+		resource.add(linkTo.withRel("all-revervations"));
+		return resource;
 	}
 
 }

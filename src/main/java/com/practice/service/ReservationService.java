@@ -1,6 +1,7 @@
 package com.practice.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedOperation;
@@ -30,7 +31,7 @@ public class ReservationService {
 		return true;
 	}
 
-	public Collection<Reservation> findReservationByName(String name) {
+	public List<Reservation> findReservationByName(String name) {
 		return repo.findByReservationName(name);
 	}
 

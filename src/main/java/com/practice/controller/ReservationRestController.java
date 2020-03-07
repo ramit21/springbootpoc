@@ -3,6 +3,8 @@ package com.practice.controller;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.Resource;
@@ -42,7 +44,7 @@ public class ReservationRestController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveReservation(@RequestBody ReservationModel model) {
+	public Boolean saveReservation(@Valid @RequestBody ReservationModel model) {
 		System.out.println("Name : "+model.getName());
 		return service.saveReservation(model.getName());
 	}

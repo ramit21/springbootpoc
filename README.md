@@ -122,6 +122,14 @@ management.endpoints.web.exposure.include=*
 ```
 
 ### Internationalization
+1. Configure locale resolver beans with default locale settings (See LocaleResolverConfig.java)
+2. Pass the locale from request headers as in /greet mapping.
+3. Hit below url with the headers as configured in step 2. In case no locale is passed, then default locale as configured in 1 gets picked up. Messages file as per the locale gets picked up, and the corresponding message is returned.
+
+```
+Accept-Language:FR
+http://localhost:8090/greet
+```
 
 
  

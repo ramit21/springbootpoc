@@ -11,9 +11,9 @@ Following steps are required to setup and run this POC:
 
 Concepts to learn from the Project:
 ### UI
-From the home page, you can migrate to the reservations page http://localhost:8090/reserve/
-When the reservation html page is being loaded, $(document).ready() gets called. 
-At this point we call the backend api using Jquery ajax support to fetch all the reservation data and render dynamically in a table.
+From the home page, you can migrate to the reservations page http://localhost:8090/examples/
+When the examples html page is being loaded, $(document).ready() gets called. 
+At this point we call the backend api using Jquery ajax support to fetch all the examples data and render dynamically in a table.
 Pay attention to how the path to CSS, js files and libraries is mentioned in the html files.
 ### Backend
 SpringbootApplication.java is responsible for bootstrapping the backend server because of @SpringBootApplication annotation.
@@ -83,7 +83,7 @@ By default, springboot returns json output. To enable xml:
 
 ```
 Header {Accept: application/xml}
-http://localhost:8090/reserve/findByName/Ramit
+http://localhost:8090/examples/findByName/Ramit
 ```
 
 ### HATEOAS: 
@@ -92,7 +92,7 @@ HATEOAS stands for Hypermedia As The Engine Of Application State. Used to give a
 To use HATEOS, include it in pom. See the below url that not only returns the data for the given user, but also returns the link to URI returning all users:
 
 ```
-http://localhost:8090/reserve/findByName/Ramit
+http://localhost:8090/examples/findByName/Ramit
 ```
 
 See ReservationRestController -> findReservationByName() on how to prepare a HATEOAS resource, add links to the resource and returning the same.
